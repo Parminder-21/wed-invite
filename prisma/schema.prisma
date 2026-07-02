@@ -1,0 +1,34 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model RSVP {
+  id              String   @id @default(uuid())
+  name            String
+  phone           String
+  email           String?
+  attending       Boolean
+  guestsCount     Int      @default(0)
+  mealPreference  String?
+  eventsAttending String   // JSON string of events (e.g. '["Haldi", "Wedding"]')
+  songRequest     String?
+  advice          String?
+  createdAt       DateTime @default(now())
+}
+
+model SiteConfig {
+  key   String @id
+  value String // JSON string containing section configurations
+}

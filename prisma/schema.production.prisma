@@ -1,0 +1,37 @@
+// This schema is used ONLY on Vercel/production (PostgreSQL via Supabase)
+// LOCAL development uses prisma/schema.prisma (SQLite)
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model RSVP {
+  id              String   @id @default(uuid())
+  name            String
+  phone           String
+  email           String?
+  attending       Boolean
+  guestsCount     Int      @default(0)
+  mealPreference  String?
+  eventsAttending String
+  songRequest     String?
+  advice          String?
+  createdAt       DateTime @default(now())
+}
+
+model SiteConfig {
+  key   String @id
+  value String
+}

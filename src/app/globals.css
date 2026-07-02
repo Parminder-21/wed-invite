@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F3E5AB;
+  --gold-dark: #AA7C11;
+  --deep-red: #1A0202;
+  --mid-red: #2D0505;
+}
+
+@theme {
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-cinzel), serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Admin pages use white bg; public pages use dark bg via their own wrapper */
+/* No global background set here to avoid conflicts */
+
+/* Custom scrollbar for public (dark) pages only */
+.dark-scrollbar ::-webkit-scrollbar {
+  width: 4px;
+}
+.dark-scrollbar ::-webkit-scrollbar-track {
+  background: #0D0101;
+}
+.dark-scrollbar ::-webkit-scrollbar-thumb {
+  background: #D4AF3740;
+  border-radius: 4px;
+}
+.dark-scrollbar ::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Text selection color for public invitation */
+.gold-selection ::selection {
+  background: rgba(212, 175, 55, 0.25);
+  color: #F3E5AB;
+}
+
+/* Admin selection */
+.admin-selection ::selection {
+  background: #80002020;
+  color: #800020;
+}
