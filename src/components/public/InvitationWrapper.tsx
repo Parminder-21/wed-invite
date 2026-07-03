@@ -12,6 +12,7 @@ import GalleryLightbox from './GalleryLightbox';
 import RSVPForm from './RSVPForm';
 import BackgroundMusic from './BackgroundMusic';
 import TravelFaqContact from './TravelFaqContact';
+import Link from 'next/link';
 
 interface InvitationWrapperProps {
   config: WeddingConfig;
@@ -86,6 +87,13 @@ export default function InvitationWrapper({ config }: InvitationWrapperProps) {
 
         {/* Floating Audio controller */}
         <BackgroundMusic autoPlayTrigger={playMusicTrigger} />
+
+        {/* Discreet Admin Link Footer */}
+        <div className="py-6 text-center bg-[#0D0101] border-t border-[#1E0101] mt-8">
+          <Link href="/admin/login" className="text-xs text-[#D4AF37]/40 hover:text-[#D4AF37] transition-colors font-sans tracking-widest uppercase">
+            Admin Portal
+          </Link>
+        </div>
       </div>
     </div>
   );
